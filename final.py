@@ -2,7 +2,7 @@ import pyshorteners
 from tkinter import *
 import mysql.connector
 
-mydb = mysql.connector.connect(host="localhost",user="Sudeeven",passwd="Chinnu363",database="urlstorer")  
+mydb = mysql.connector.connect(host="localhost",user="username",passwd="password",database="databasename")  
 mycursor = mydb.cursor()
 
 
@@ -13,7 +13,7 @@ def convert_url():
     short_url = shorterClass.tinyurl.short(long_url)
     url_field.delete(0, END)
     url_field.insert(0, short_url) 
-    insert_query = "INSERT INTO shorturls(longurl,shorturl) VALUES(%s,%s)" 
+    insert_query = "INSERT INTO tablename(longurl,shorturl) VALUES(%s,%s)" 
     vals = (long_url,short_url)
     mycursor.execute(insert_query,vals)
     mydb.commit()
